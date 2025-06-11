@@ -8,20 +8,28 @@ public class Bullet : MonoBehaviour
     public float speed;
     private Rigidbody2D rb;
 
-    // Start is called before the first frame update
+    
+    public float destroyTime = 3f;
+    
+
     void Start()
     {
-
+        Destroy(gameObject, destroyTime);
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    public void SetDirection(Vector2 dir)
     {
-        
+        dir = dir.normalized;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void Update()
+    {
+        transform.Translate(dir * speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         
+        Destroy(gameObject);
     }
 }
