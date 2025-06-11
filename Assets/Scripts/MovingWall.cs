@@ -7,14 +7,24 @@ using UnityEngine.PlayerLoop;
 public class MovingWall : MonoBehaviour
 {
 
-    // Start is called before the first frame update
+    public float speed = 2f;          // Velocidad del movimiento
+    private Vector2 direction = Vector2.right;  // Dirección inicial
+
     void Start()
     {
-
+        StartCoroutine(MoveWall());
     }
-
-    void Update()
+    //!!!!!!!Añadir RIGIDBODY KINEMATIC !!!!!!!
+    IEnumerator MoveWall()
     {
+        while (true)
+        {
+            // Mover la pared continuamente en una dirección
+            GetComponent<Rigidbody2D>().velocity = direction * speed;
 
+            // Espera 3 segundos y cambia la dirección
+            yield return new WaitForSeconds(3f);
+            direction *= -1; // Invertir dirección
+        }
     }
 }
