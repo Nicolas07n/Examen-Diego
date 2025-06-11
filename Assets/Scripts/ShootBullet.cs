@@ -5,7 +5,9 @@ using UnityEngine;
 public class ShootBullet : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public Transform firePoint; // objeto vacío donde aparece la bala
+
+    
+    public Transform firePoint; // punto de disparo
     public float shootCooldown = 0.3f;
 
     private float lastShootTime;
@@ -22,7 +24,6 @@ public class ShootBullet : MonoBehaviour
     void Shoot()
     {
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f; // para evitar errores con la Z
         Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
