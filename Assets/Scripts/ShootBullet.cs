@@ -5,16 +5,27 @@ using UnityEngine;
 public class ShootBullet : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public Transform firePoint; // objeto vacío donde aparece la bala
+    public float shootCooldown = 0.3f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float lastShootTime;
 
-    // Update is called once per frame
     void Update()
     {
-       
+        if (Input.GetMouseButton(0) && Time.time >= lastShootTime + shootCooldown)
+        {
+            Shoot();
+            lastShootTime = Time.time;
+        }
+    }
+
+    void Shoot()
+    {
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0f; // para evitar errores con la Z
+        Vector2 direction = (mouseWorldPos - firePoint.position).normalized;
+
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        bullet.GetComponent<Bullet>().SetDirection(direction);
     }
 }
