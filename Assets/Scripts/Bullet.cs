@@ -4,32 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public Vector2 dir;
-    public float speed;
-    private Rigidbody2D rb;
-
-    
-    public float destroyTime = 3f;
-    
+    private Rigidbody2D _rb;
+    private Vector2 direction;
+    public float speed = 10f;
 
     void Start()
     {
-        Destroy(gameObject, destroyTime);
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.velocity = direction * speed;
     }
 
+    // Llamado desde fuera para establecer la dirección
     public void SetDirection(Vector2 dir)
     {
-        dir = dir.normalized;
-    }
-
-    void Update()
-    {
-        transform.Translate(dir * speed * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        
-        Destroy(gameObject);
+        direction = dir.normalized;
     }
 }
