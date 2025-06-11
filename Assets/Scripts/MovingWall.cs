@@ -9,6 +9,7 @@ public class MovingWall : MonoBehaviour
 
     public float speed = 2f;          // Velocidad del movimiento
     private Vector2 direction = Vector2.right;  // Dirección inicial
+    public AudioClip sonidoCambioDireccion;//Para que haya sonido
 
     void Start()
     {
@@ -25,6 +26,11 @@ public class MovingWall : MonoBehaviour
             // Espera 3 segundos y cambia la dirección
             yield return new WaitForSeconds(3f);
             direction *= -1; // Invertir dirección
+            //Para que haya sonido 
+            if (sonidoCambioDireccion != null && AudioManager.instance != null)
+            {
+                AudioManager.instance.PlayAudio(sonidoCambioDireccion, "CambioDireccion");
+            }
         }
     }
 }
