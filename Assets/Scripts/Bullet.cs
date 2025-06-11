@@ -23,8 +23,8 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Evitar que rebote si choca con el jugador
-        if (collision.gameObject.CompareTag("Player"))
+        // Ignorar colisión si el objeto está en la capa "Player"
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
             return;
 
         bounceCount++;
@@ -35,9 +35,10 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            // Invertir la dirección (simplemente se refleja la velocidad)
+            // Invertir la dirección y seguir moviéndose
             direction = -direction;
             _rb.velocity = direction * speed;
         }
     }
 }
+
