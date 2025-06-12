@@ -5,17 +5,13 @@ using UnityEngine;
 
 public class UpdateWallHitText : MonoBehaviour
 {
-    private TMP_Text text;
+    public TextMeshProUGUI textoCambios;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        text = GetComponent<TMP_Text>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
-
+        if (GameManager.instance != null)
+        {
+            textoCambios.text = "Cambios de dirección: " + GameManager.instance.CambiosDireccion;
+        }
     }
 }

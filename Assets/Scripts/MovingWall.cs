@@ -26,6 +26,11 @@ public class MovingWall : MonoBehaviour
             // Espera 3 segundos y cambia la dirección
             yield return new WaitForSeconds(3f);
             direction *= -1; // Invertir dirección
+            //Para elGame Manager
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.RegistrarCambioDireccion();
+            }
             //Para que haya sonido 
             if (sonidoCambioDireccion != null && AudioManager.instance != null)
             {
