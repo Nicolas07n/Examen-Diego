@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class RandomEnemy : Enemy
 {
-
+    public override void Move()
+    {
+        
+    }
 }

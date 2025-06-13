@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType { AVERAGE_ENEMY, RANDOM_ENEMY, DUMB_ENEMY };
+
 
 public abstract class Enemy
 {
@@ -21,7 +21,10 @@ public abstract class Enemy
     {
         return sprite;
     }
+    public Enemy()
+    {
 
+    }
     public abstract void Move();
     public virtual void Hit() { }
 }
