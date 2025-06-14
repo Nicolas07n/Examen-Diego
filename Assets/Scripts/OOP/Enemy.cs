@@ -10,6 +10,11 @@ public abstract class Enemy
     protected Rigidbody2D rb;
     protected Sprite sprite;
 
+
+    public Enemy()
+    {
+
+    }
     public Enemy(float speed, Rigidbody2D rb, Sprite sprite)
     {
         this.speed = speed;
@@ -21,10 +26,7 @@ public abstract class Enemy
     {
         return sprite;
     }
-    public Enemy()
-    {
-
-    }
+    
     public abstract void Move();
     public virtual void Hit() { }
 }

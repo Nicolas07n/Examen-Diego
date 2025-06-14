@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AverageEnemy:Enemy
+public abstract class AverageEnemy:Enemy
 {
     private GameObject target;
 

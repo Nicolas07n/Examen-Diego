@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomEnemy : Enemy
+public abstract class RandomEnemy : Enemy
 {
+    
     public override void Move()
     {
         
