@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AverageEnemy:Enemy
+public class AverageEnemy:Enemy
 {
     private GameObject target;
 
+    public AverageEnemy()
+    {
+        // Constructor vacío.
+    }
     public AverageEnemy(Rigidbody2D rb, GameObject target) : base(15f, rb, null)
     {
         this.target = target;
